@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Stoica | 
+    FP&A Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #001f3f;
+            --dark-navy: #001225;
+            --accent-gold: #D4AF37;
+            --light-gold: #f5e8c9;
+            --accent-burgundy: #800020;
+            --light-gray: #f5f7fa;
+            --medium-gray: #e1e5eb;
+            --text-dark: #333;
+            --text-light: #f8f8ff;
+            --section-padding: 80px 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.8;
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-navy), var(--primary-navy));
+            color: var(--text-light);
+            padding: 60px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        
+        .header-content .subtitle {
+            font-size: 1.8rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            color: var(--light-gold);
+            font-weight: 300;
+        }
+        
+        .contact-bar {
+            background: rgba(212, 175, 55, 0.15);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            max-width: 800px;
+            margin: 30px auto 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item i {
+            color: var(--accent-gold);
+        }
+        
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 31, 63, 0.5) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 18, 37, 0.7) 0%, transparent 30%);
+            z-index: 1;
+        }
+        
+        .summary-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: -50px auto 0;
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--accent-gold);
+        }
+        
+        .summary-content {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: var(--section-padding);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary-navy);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+        
+        /* Experience Section */
+        .experience {
+            background: white;
+        }
+        
+        .job-card {
+            background: var(--light-gray);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border-left: 4px solid var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .job-header h3 {
+            color: var(--primary-navy);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .job-title {
+            font-weight: 600;
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin: 5px 0;
+            display: block;
+        }
+        
+        .job-date {
+            background: var(--accent-gold);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .job-details ul {
+            padding-left: 20px;
+        }
+        
+        .job-details li {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .job-details li::before {
+            content: "•";
+            color: var(--accent-gold);
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background: var(--light-gold);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        /* Education Section */
+        .education {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--dark-navy) 100%);
+            color: white;
+        }
+        
+        .education .section-header h2 {
+            color: white;
+        }
+        
+        .edu-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 35px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .edu-header h3 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+        }
+        
+        .edu-details {
+            margin-bottom: 25px;
+        }
+        
+        .edu-highlights ul {
+            padding-left: 20px;
+        }
+        
+        .edu-highlights li {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .edu-highlights li::before {
+            content: "▹";
+            color: var(--accent-gold);
+            position: absolute;
+            left: -20px;
+        }
+        
+        /* Extracurricular Section */
+        .extracurricular {
+            background: white;
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .activity-card {
+            background: var(--light-gray);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+            border-top: 4px solid var(--accent-gold);
+        }
+        
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .activity-header h3 {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .activity-date {
+            background: var(--light-gold);
+            color: var(--primary-navy);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .activity-details ul {
+            padding-left: 20px;
+        }
+        
+        .activity-details li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .activity-details li::before {
+            content: "•";
+            color: var(--accent-gold);
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+            font-size: 1.2rem;
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: var(--light-gray);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .skills-card {
+            background: white;
+            border-radius: 10px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skills-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-navy);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .skills-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .skill-tag {
+            background: var(--light-gold);
+            color: var(--primary-navy);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-navy);
+            color: var(--text-light);
+            text-align: center;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+        
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .header-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-bar {
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .job-header, .edu-header, .activity-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            :root {
+                --section-padding: 60px 0;
+            }
+            
+            .header-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-content .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .contact-item {
+                font-size: 0.95rem;
+            }
+            
+            .summary-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-pattern"></div>
+        <div class="container header-content">
+            <h1>Alex Stoica</h1>
+            <div class="subtitle">FP&A Professional</div>
+            
+            <div class="contact-bar">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Burlington, Ontario</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(289) 242-3840</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>astoica3@uwo.ca</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>linkedin.com/in/alexcristoica</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="summary-section">
+                <div class="summary-content">
+                    Finance-focused professional with expertise in risk analysis, financial reporting, and strategic financial management. Seeking to leverage analytical skills and business acumen in FP&A. Proven ability to enhance financial performance and drive operational efficiency.
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Education Section -->
+    <section class="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+            </div>
+            
+            <div class="edu-card">
+                <div class="edu-header">
+                    <h3>Western University</h3>
+                    <div class="job-date">Expected 2027</div>
+                </div>
+                <div class="edu-details">
+                    <p>London, Ontario</p>
+                    <p><strong>Faculty of Social Science, Business Management Specializing in Finance</strong></p>
+                </div>
+                <div class="edu-highlights">
+                    <ul>
+                        <li><strong>GPA:</strong> 85.0% (3.9/4.0)</li>
+                        <li><strong>Relevant Coursework:</strong> Microeconomics and Macroeconomics Theory and Policy, Accounting and Finance Fundamentals, Advanced Finance</li>
+                        <li><strong>Awards:</strong> Dean’s Honor List 2023-2025, Western Admission Scholarship ($1,500), International Learning Award ($1,000)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Work & Leadership Experience</h2>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-header">
+                    <h3>HotTakes</h3>
+                    <div class="job-date">May 2025 - Present</div>
+                </div>
+                <div class="job-title">Senior Risk Analyst</div>
+                <div class="job-details">
+                    <ul>
+                        <li>Enhanced financial reporting accuracy through risk assessment by upgrading business associate lead tracking in Airtable, resulting in a <span class="highlight">~40% increase in lead-to-sale conversion</span>, ensuring precise commission payments</li>
+                        <li>Performed internal audits by analyzing financial discrepancies and profit margins during periods of slippage, leading to a <span class="highlight">decrease in slippage</span> and resolution of cost inefficiencies</li>
+                        <li>Managed client invoicing and payouts by maintaining accurate records and ensuring timely transactions, resulting in <span class="highlight">improved cash flows</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-header">
+                    <h3>Ace Tennis</h3>
+                    <div class="job-date">July 2024 – August 2025</div>
+                </div>
+                <div class="job-title">Tennis Coach and Tournament Director</div>
+                <div class="job-details">
+                    <ul>
+                        <li>Developed intriguing and fun ways to learn tennis to beginners aged 6-12 to enhance skills and maintain <span class="highlight">high engagement levels</span></li>
+                        <li>Managed all tournament player check-ins and assigned matches to courts while monitoring adherence to rules aiming to facilitate fair organized matches and <span class="highlight">smooth tournament schedules</span></li>
+                        <li>Handled payment processes and confirmed financial transactions to secure funds and verify financial compliance resulting in a <span class="highlight">financially accountable</span> event</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="job-card">
+                <div class="job-header">
+                    <h3>Joshua Creek Tennis</h3>
+                    <div class="job-date">July – August 2021 & July - August 2022</div>
+                </div>
+                <div class="job-title">High Performance Tennis Coach</div>
+                <div class="job-details">
+                    <ul>
+                        <li>Conducted specialized drills and assigned training matches for high-performance tennis players aged 7-12 to enhance their technical skills and <span class="highlight">competitive performance</span></li>
+                        <li>Led fitness programs tailored specifically for young athletes aiming to boost physical conditioning and coordination resulting in <span class="highlight">increased stamina</span> and athletic performance</li>
+                        <li>Monitored and encouraged positive attitudes during intensive training sessions aiming to foster <span class="highlight">mental resilience</span> and sportsmanship</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Extracurricular Section -->
+    <section class="extracurricular">
+        <div class="container">
+            <div class="section-header">
+                <h2>Extracurricular Experience</h2>
+            </div>
+            
+            <div class="activity-grid">
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <h3>Western Self-Improvement Club</h3>
+                        <div class="activity-date">2024 - 2025</div>
+                    </div>
+                    <div class="activity-title">Director of Podcast Editor</div>
+                    <div class="activity-details">
+                        <ul>
+                            <li>Edited engaging short clips to post to social media from the full-length podcast aiming to grow social media accounts resulting in <span class="highlight">increased user engagement</span> and follower growth</li>
+                            <li>Managed podcast equipment expenses aiming to optimize investment, resulting in <span class="highlight">reduced overhead costs</span> without compromising quality</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <h3>Pinnacle Performance App</h3>
+                        <div class="activity-date">2024 - 2025</div>
+                    </div>
+                    <div class="activity-title">Copywriter</div>
+                    <div class="activity-details">
+                        <ul>
+                            <li>Researched and applied marketing strategies to enhance social media engagement for a tennis fitness program, resulting in a <span class="highlight">viral video with 250,000+ views</span> and significantly boosted brand visibility</li>
+                            <li>Developed and executed a content management plan to align social media posts with brand goals, resulting in <span class="highlight">expanded responsibilities</span> from content creation to full account management</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <h3>Community Engaged Learning Cuba</h3>
+                        <div class="activity-date">Feb 2023 – 2024 & Feb 2024 - 2025</div>
+                    </div>
+                    <div class="activity-title">Student</div>
+                    <div class="activity-details">
+                        <ul>
+                            <li>Selected as one of 30 students for community engaged learning experience in Cuba aiming to immerse in Cuban culture and enhance Spanish language skills resulting in <span class="highlight">significant language proficiency improvements</span></li>
+                            <li>Engaged with diverse community settings including a primary school, educational institution supporting children with disabilities, and retirement home</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills & Interests</h2>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skills-card">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Financial Analysis</span>
+                        <span class="skill-tag">Risk Assessment</span>
+                        <span class="skill-tag">Financial Reporting</span>
+                        <span class="skill-tag">MS Excel</span>
+                        <span class="skill-tag">MS PowerPoint</span>
+                        <span class="skill-tag">Airtable</span>
+                        <span class="skill-tag">Final Cut Pro X</span>
+                        <span class="skill-tag">Adobe Premiere Pro</span>
+                        <span class="skill-tag">Canva</span>
+                    </div>
+                </div>
+                
+                <div class="skills-card">
+                    <h3>Languages & Interests</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">English</span>
+                        <span class="skill-tag">Spanish</span>
+                        <span class="skill-tag">Romanian</span>
+                        <span class="skill-tag">Golf</span>
+                        <span class="skill-tag">Acrobatics</span>
+                        <span class="skill-tag">Tennis</span>
+                        <span class="skill-tag">Kickboxing</span>
+                        <span class="skill-tag">Running</span>
+                        <span class="skill-tag">Strength Training</span>
+                        <span class="skill-tag">Personal Finance</span>
+                        <span class="skill-tag">Digital Marketing</span>
+                        <span class="skill-tag">Video Editing</span>
+                    </div>
+                    
+                    <h3 style="margin-top: 30px;">Other Experiences</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">High-Performance Tennis Player</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Alex Stoica</div>
+            
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Burlington, Ontario</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(289) 242-3840</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>astoica3@uwo.ca</span>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/alexcristoica" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Alex Stoica. All rights reserved.</p>
+                <p>Finance Professional | Western University</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
